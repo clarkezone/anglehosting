@@ -3,9 +3,30 @@
   <ItemGroup>
     <ClCompile Include="App.cpp" />
     <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Angle\OpenGLES.cpp">
+      <Filter>Angle</Filter>
+    </ClCompile>
+    <ClCompile Include="Angle\AngleSpriteRenderer.cpp">
+      <Filter>Angle</Filter>
+    </ClCompile>
+    <ClCompile Include="Angle\SimpleRenderer.cpp">
+      <Filter>Angle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Angle\OpenGLES.h">
+      <Filter>Angle</Filter>
+    </ClInclude>
+    <ClInclude Include="Angle\AngleSpriteRenderer.h">
+      <Filter>Angle</Filter>
+    </ClInclude>
+    <ClInclude Include="Angle\SimpleRenderer.h">
+      <Filter>Angle</Filter>
+    </ClInclude>
+    <ClInclude Include="Angle\MathHelper.h">
+      <Filter>Angle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Logo.scale-100.png">
@@ -29,10 +50,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="CoreWindowHost_TemporaryKey.pfx" />
+    <None Include="..\..\angle\winrt\10\src\Debug_Win32\libEGL.dll">
+      <Filter>Binaries</Filter>
+    </None>
+    <None Include="..\..\angle\winrt\10\src\Debug_Win32\libGLESv2.dll">
+      <Filter>Binaries</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Assets">
       <UniqueIdentifier>{db9086fe-bacc-4437-8272-1aa6642082db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Angle">
+      <UniqueIdentifier>{651c3467-d992-4310-9e55-fa10c301acd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Binaries">
+      <UniqueIdentifier>{e5df471e-53d7-456d-87c7-9a4978f4c2c4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
