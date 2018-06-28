@@ -177,28 +177,16 @@ EGLSurface OpenGLES::CreateSurface(winrt::Windows::UI::Composition::ISpriteVisua
     {
         // EGL_ANGLE_SURFACE_RENDER_TO_BACK_BUFFER is part of the same optimization as EGL_ANGLE_DISPLAY_ALLOW_RENDER_TO_BACK_BUFFER (see above).
         // If you have compilation issues with it then please update your Visual Studio templates.
-        EGL_ANGLE_SURFACE_RENDER_TO_BACK_BUFFER, EGL_TRUE,
+		EGL_WINDOWS_UI_COMPOSITION_ANGLE, EGL_TRUE,
+		EGL_ANGLE_SURFACE_RENDER_TO_BACK_BUFFER, EGL_TRUE,
         EGL_NONE
     };
     
-    // Create a PropertySet and initialize with the EGLNativeWindowType.
-    PropertySet surfaceCreationProperties;
-    surfaceCreationProperties.Insert(winrt::hstring(EGLNativeWindowTypeProperty), visual);
 
-    //// If a render surface size is specified, add it to the surface creation properties
-    //if (renderSurfaceSize != nullptr)
-    //{
-    //    surfaceCreationProperties->Insert(ref new String(EGLRenderSurfaceSizeProperty), PropertyValue::CreateSize(*renderSurfaceSize));
-    //}
+	
+	auto rawPointer = winrt::get_abi(visual);
 
-    //// If a resolution scale is specified, add it to the surface creation properties
-    //if (resolutionScale != nullptr)
-    //{
-    //    surfaceCreationProperties->Insert(ref new String(EGLRenderResolutionScaleProperty), PropertyValue::CreateSingle(*resolutionScale));
-    //}
-
-	//surface = eglCreateWindowSurface(mEglDisplay, mEglConfig, reinterpret_cast<IInspectable*>(surfaceCreationProperties.as<IInspectable>()), surfaceAttributes);
-    surface = eglCreateWindowSurface(mEglDisplay, mEglConfig, static_cast<EGLNativeWindowType>(winrt::get_abi(surfaceCreationProperties)), surfaceAttributes);
+	surface = eglCreateWindowSurface(mEglDisplay, mEglConfig, static_cast<EGLNativeWindowType>(rawPointer), surfaceAttributes);
     if (surface == EGL_NO_SURFACE)
     {
 		throw winrt::hresult_error(E_FAIL, L"Failed to create EGL surface");
