@@ -91,14 +91,14 @@ struct Window : DesktopWindow<Window>
         WNDCLASS wc{};
         wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
         wc.hInstance = reinterpret_cast<HINSTANCE>(&__ImageBase);
-        wc.lpszClassName = L"Windows::UI::Composition in Win32 Sample";
+        wc.lpszClassName = L"Windows::UI::Composition hosting Angle in Win32 Desktop";
         wc.style = CS_HREDRAW | CS_VREDRAW;
         wc.lpfnWndProc = WndProc;
         RegisterClass(&wc);
         WINRT_ASSERT(!m_window);
 
         WINRT_VERIFY(CreateWindow(wc.lpszClassName,
-            L"Windows::UI::Composition in Win32 Sample", 
+            L"Windows::UI::Composition hosting Angle in Win32 Desktop", 
             WS_OVERLAPPEDWINDOW | WS_VISIBLE, 
             CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, 
             nullptr, nullptr, wc.hInstance, this));
