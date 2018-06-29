@@ -183,10 +183,7 @@ EGLSurface OpenGLES::CreateSurface(winrt::Windows::UI::Composition::ISpriteVisua
     };
     
 
-	
-	auto rawPointer = winrt::get_abi(visual);
-
-	surface = eglCreateWindowSurface(mEglDisplay, mEglConfig, static_cast<EGLNativeWindowType>(rawPointer), surfaceAttributes);
+	surface = eglCreateWindowSurface(mEglDisplay, mEglConfig, static_cast<EGLNativeWindowType>(winrt::get_abi(visual)), surfaceAttributes);
     if (surface == EGL_NO_SURFACE)
     {
 		throw winrt::hresult_error(E_FAIL, L"Failed to create EGL surface");
