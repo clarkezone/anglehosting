@@ -1,5 +1,4 @@
 #include "pch.h"
-#include "AngleSpriteRenderer.h"
 
 
 extern "C" IMAGE_DOS_HEADER __ImageBase;

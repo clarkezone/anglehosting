@@ -6,12 +6,12 @@ using namespace Concurrency;
 using namespace Windows::Foundation;
 using namespace Windows::UI::Composition;
 
-class AngleSpriteRenderer
+class AngleSpriteRendererPrivate
 {
 public:
-	AngleSpriteRenderer();
-	~AngleSpriteRenderer();
-	void Start(SpriteVisual & withVisual);
+	AngleSpriteRendererPrivate();
+	~AngleSpriteRendererPrivate();
+	void Start(const SpriteVisual & withVisual);
 private:
 	void CreateRenderSurface();
 	void DestroyRenderSurface();
@@ -21,7 +21,7 @@ private:
 
 	OpenGLES* mOpenGLES;
 
-	EGLSurface mRenderSurface;
+	EGLSurface mRenderSurface{ EGL_NO_SURFACE };
 	Concurrency::critical_section mRenderSurfaceCriticalSection;
 	IAsyncAction mRenderLoopWorker;
 	SpriteVisual mHostVisual{nullptr};

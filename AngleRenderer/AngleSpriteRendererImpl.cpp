@@ -1,27 +1,28 @@
 #include "pch.h"
-#include "AngleSpriteRenderer.h"
+#include "AngleSpriteRendererImpl.h"
+#include "inc/AngleSpriteRenderer.h"
 #include "SimpleRenderer.h"
 
-AngleSpriteRenderer::AngleSpriteRenderer() : mRenderSurface(EGL_NO_SURFACE)
+AngleSpriteRendererPrivate::AngleSpriteRendererPrivate() : mRenderSurface(EGL_NO_SURFACE)
 {
 	//TODO smartpointer
 	mOpenGLES = new OpenGLES();
 }
 
-AngleSpriteRenderer::~AngleSpriteRenderer()
+AngleSpriteRendererPrivate::~AngleSpriteRendererPrivate()
 {
 	StopRenderLoop();
 	DestroyRenderSurface();
 	delete mOpenGLES;
 }
 
-void AngleSpriteRenderer::Start(SpriteVisual & withVisual) {
+void AngleSpriteRendererPrivate::Start(const SpriteVisual & withVisual) {
 	mHostVisual = withVisual;
 	CreateRenderSurface();
 	StartRenderLoop();
 }
 
-void AngleSpriteRenderer::CreateRenderSurface()
+void AngleSpriteRendererPrivate::CreateRenderSurface()
 {
 	if (mOpenGLES && mRenderSurface == EGL_NO_SURFACE)
 	{
@@ -29,7 +30,7 @@ void AngleSpriteRenderer::CreateRenderSurface()
 	}
 }
 
-void AngleSpriteRenderer::DestroyRenderSurface()
+void AngleSpriteRendererPrivate::DestroyRenderSurface()
 {
 	if (mOpenGLES)
 	{
@@ -38,7 +39,7 @@ void AngleSpriteRenderer::DestroyRenderSurface()
 	mRenderSurface = EGL_NO_SURFACE;
 }
 
-void AngleSpriteRenderer::RecoverFromLostDevice()
+void AngleSpriteRendererPrivate::RecoverFromLostDevice()
 {
 	// Stop the render loop, reset OpenGLES, recreate the render surface
 	// and start the render loop again to recover from a lost device.
@@ -56,7 +57,7 @@ void AngleSpriteRenderer::RecoverFromLostDevice()
 	StartRenderLoop();
 }
 
-void AngleSpriteRenderer::StartRenderLoop()
+void AngleSpriteRendererPrivate::StartRenderLoop()
 {
 	// If the render loop is already running then do not start another thread.
 	if (mRenderLoopWorker != nullptr && mRenderLoopWorker.Status() == Windows::Foundation::AsyncStatus::Started)
@@ -103,7 +104,7 @@ void AngleSpriteRenderer::StartRenderLoop()
 	mRenderLoopWorker = Windows::System::Threading::ThreadPool::RunAsync(workItemHandler, Windows::System::Threading::WorkItemPriority::High, Windows::System::Threading::WorkItemOptions::TimeSliced);
 }
 
-void AngleSpriteRenderer::StopRenderLoop()
+void AngleSpriteRendererPrivate::StopRenderLoop()
 {
 	if (mRenderLoopWorker)
 	{

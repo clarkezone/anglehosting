@@ -76,17 +76,14 @@
       <AdditionalOptions>%(AdditionalOptions) /permissive- /bigobj</AdditionalOptions>
       <DisableSpecificWarnings>4453;28204</DisableSpecificWarnings>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(AngleIncPath);$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
-      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(AngleBinPath)lib\libGLESv2.lib;$(AngleBinPath)lib\libEGL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(AngleBinPath)lib\libGLESv2.lib;$(AngleBinPath)lib\libEGL.lib;$(OutDir)..\AngleRenderer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Angle\AngleSpriteRenderer.h" />
-    <ClInclude Include="Angle\MathHelper.h" />
-    <ClInclude Include="Angle\OpenGLES.h" />
-    <ClInclude Include="Angle\SimpleRenderer.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -102,9 +99,6 @@
     <Image Include="Assets\WideLogo.scale-100.png" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Angle\AngleSpriteRenderer.cpp" />
-    <ClCompile Include="Angle\OpenGLES.cpp" />
-    <ClCompile Include="Angle\SimpleRenderer.cpp" />
     <ClCompile Include="App.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

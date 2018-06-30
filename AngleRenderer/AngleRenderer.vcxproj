@@ -98,6 +98,7 @@
       <AdditionalIncludeDirectories>$(AngleIncPath);</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -158,7 +159,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AngleSpriteRenderer.h" />
+    <ClInclude Include="AngleSpriteRendererImpl.h" />
+    <ClInclude Include="inc\AngleSpriteRenderer.h" />
     <ClInclude Include="MathHelper.h" />
     <ClInclude Include="OpenGLES.h" />
     <ClInclude Include="Public.h" />
@@ -168,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AngleSpriteRenderer.cpp" />
+    <ClCompile Include="AngleSpriteRendererImpl.cpp" />
     <ClCompile Include="OpenGLES.cpp" />
     <ClCompile Include="SimpleRenderer.cpp" />
     <ClCompile Include="pch.cpp">

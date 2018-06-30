@@ -1,5 +1,4 @@
 #include "pch.h"
-#include "Angle/AngleSpriteRenderer.h"
 
 using namespace winrt;
 
@@ -16,7 +15,7 @@ struct App : implements<App, IFrameworkViewSource, IFrameworkView>
     VisualCollection m_visuals{ nullptr };
     Visual m_selected{ nullptr };
     float2 m_offset{};
-	AngleSpriteRenderer m_render{};
+	AngleSpriteRenderer m_render;
 
     IFrameworkView CreateView()
     {
@@ -84,7 +83,7 @@ struct App : implements<App, IFrameworkViewSource, IFrameworkView>
 		//visual.Brush(compositor.CreateColorBrush(Windows::UI::Colors::Red()));
 
         m_visuals.InsertAtTop(visual);
-
+		
 		m_render.Start(visual);
     }
 };

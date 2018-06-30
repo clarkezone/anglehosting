@@ -81,10 +81,10 @@
     <ClCompile>
       <PreprocessorDefinitions>WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(AngleIncPath);$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalDependencies);$(OutDir)AngleRenderer.lib;</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
@@ -102,20 +102,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AngleSpriteRenderer.h" />
-    <ClInclude Include="MathHelper.h" />
-    <ClInclude Include="OpenGLES.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="SimpleRenderer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AngleSpriteRenderer.cpp" />
     <ClCompile Include="desktop.cpp" />
-    <ClCompile Include="OpenGLES.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="SimpleRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt">
