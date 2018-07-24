@@ -55,7 +55,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Label="ANGLE">
     <AngleIncPath Condition=" '$(AngleIncPath)' == '' ">$(AngleRootPath)\include\</AngleIncPath>
-    <AngleBinPath Condition=" '$(AngleBinPath)' == '' ">$(AngleRootPath)\winrt\10\src\$(Configuration)_$(Platform)\</AngleBinPath>
+    <AngleBinPath Condition=" '$(AngleBinPath)' == '' ">$(AngleRootPath)\src\$(Configuration)_$(Platform)\</AngleBinPath>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
@@ -71,10 +71,12 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(AngleIncPath);$(ProjectDir);%(AdditionalIncludeDirectories);$(GeneratedFilesDir)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(AngleBinPath)lib\libGLESv2.lib;$(AngleBinPath)lib\libEGL.lib;kernel32.lib;user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Platform)'=='Win32'">
@@ -84,7 +86,8 @@
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(AngleBinPath)lib\libGLESv2.lib;$(AngleBinPath)lib\libEGL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/Verbose %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
@@ -121,14 +124,6 @@
     <Text Include="readme.txt">
       <DeploymentContent>false</DeploymentContent>
     </Text>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\angle\winrt\10\src\Debug_Win32\libEGL.dll">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="..\..\angle\winrt\10\src\Debug_Win32\libGLESv2.dll">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
