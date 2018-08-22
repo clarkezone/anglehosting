@@ -109,6 +109,12 @@
     <Lib>
       <AdditionalDependencies>$(AngleBinPath)lib\libGLESv2.lib</AdditionalDependencies>
     </Lib>
+    <PreBuildEvent>
+      <Command>$(SolutionDir)scripts\getangle.bat $(SolutionDir) $(PlatformArchitecture)</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>Getting Angle dependencies from GitHub</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -128,6 +134,10 @@
     <Lib>
       <AdditionalDependencies>libGLESv2.dll.lib</AdditionalDependencies>
     </Lib>
+    <PreBuildEvent>
+      <Command>$(SolutionDir)scripts\getangle.bat $(SolutionDir) $(PlatformArchitecture)</Command>
+      <Message>Getting Angle dependencies from GitHub</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>

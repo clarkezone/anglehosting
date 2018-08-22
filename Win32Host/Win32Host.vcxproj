@@ -55,6 +55,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(SolutionDir)Dependencies\angle;$(IncludePath)</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64;$(SolutionDir)Dependencies\Angle;$(SolutionDir)x$(PlatformArchitecture)\$(Configuration)\</LibraryPath>
   </PropertyGroup>
   <!--<PropertyGroup Label="ANGLE">
     <AngleIncPath Condition=" '$(AngleIncPath)' == '' ">$(AngleRootPath)\include\</AngleIncPath>
@@ -80,7 +81,17 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">kernel32.lib;user32.lib;%(AdditionalDependencies);AngleRenderer.lib;libglesv2.dll.lib;libegl.dll.lib</AdditionalDependencies>
     </Link>
+    <PreLinkEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">xcopy /y /d /q "$(SolutionDir)\Dependencies\Angle\LibEGL.dll" "$(OutputPath)"
+xcopy /y /d /q "$(SolutionDir)\Dependencies\Angle\LibEGL.dll.pdb" "$(OutputPath)"
+xcopy /y /d /q "$(SolutionDir)\Dependencies\Angle\LibGLESv2.dll" "$(OutputPath)"
+xcopy /y /d /q "$(SolutionDir)\Dependencies\Angle\LibGLESv2.dll.pdb" "$(OutputPath)"</Command>
+    </PreLinkEvent>
+    <PreLinkEvent>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Copy Angle binaries to output</Message>
+    </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Platform)'=='Win32'">
     <ClCompile>
