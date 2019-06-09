@@ -7,6 +7,7 @@
 
 #define NOMINMAX
 
+#include "unknwn.h"
 #include "winrt/Windows.ApplicationModel.Core.h"
 #include "winrt/Windows.UI.Core.h"
 #include "winrt/Windows.UI.Composition.h"
@@ -24,7 +25,8 @@
 #include <ppltasks.h>
 
 // Enable function definitions in the GL headers below
-#define GL_GLEXT_PROTOTYPES
+//#define GL_GLEXT_PROTOTYPES
+#define EGL_EGL_PROTOTYPES
 
 // OpenGL ES includes
 #include <GLES2/gl2.h>

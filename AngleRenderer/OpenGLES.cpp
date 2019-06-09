@@ -18,6 +18,10 @@ OpenGLES::~OpenGLES()
 	Cleanup();
 }
 
+//#ifndef EGLAPI
+//#define EGLAPI KHRONOS_APICALL
+//#endif
+
 void OpenGLES::Initialize()
 {
 	const EGLint configAttributes[] =
@@ -124,6 +128,9 @@ void OpenGLES::Initialize()
 	}
 
 	EGLint numConfigs = 0;
+
+    //PFNEGLCHOOSECONFIGPROC chooseConfig = reinterpret_cast<PFNEGLCHOOSECONFIGPROC>(eglGetProcAddress("glEGLImageTargetTexture2DOES"));
+    //if ((chooseConfig(mEglDisplay, configAttributes, &mEglConfig, 1, &numConfigs) == EGL_FALSE) || (numConfigs == 0))
 	if ((eglChooseConfig(mEglDisplay, configAttributes, &mEglConfig, 1, &numConfigs) == EGL_FALSE) || (numConfigs == 0))
 	{
 		throw winrt::hresult_error(E_FAIL, L"Failed to choose first EGLConfig");
@@ -170,7 +177,8 @@ EGLSurface OpenGLES::CreateSurface(winrt::Windows::UI::Composition::ISpriteVisua
 	{
 		// EGL_ANGLE_SURFACE_RENDER_TO_BACK_BUFFER is part of the same optimization as EGL_ANGLE_DISPLAY_ALLOW_RENDER_TO_BACK_BUFFER (see above).
 		// If you have compilation issues with it then please update your Visual Studio templates.
-		EGL_WINDOWS_UI_COMPOSITION_ANGLE, EGL_TRUE,
+        //TODO: reinstate this
+		//EGL_WINDOWS_UI_COMPOSITION_ANGLE, EGL_TRUE,
 		EGL_NONE
 	};
 

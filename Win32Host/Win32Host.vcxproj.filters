@@ -34,5 +34,6 @@
     <None Include="..\..\angle\winrt\10\src\Debug_Win32\libGLESv2.dll">
       <Filter>Binaries</Filter>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
