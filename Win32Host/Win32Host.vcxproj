@@ -84,7 +84,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
-      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">kernel32.lib;user32.lib;%(AdditionalDependencies);libegl_static.lib;AngleRenderer.lib;libglesv2_static.lib;</AdditionalDependencies>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ole32.lib;kernel32.lib;user32.lib;%(AdditionalDependencies);libegl.dll.lib;AngleRenderer.lib;libglesv2.dll.lib;</AdditionalDependencies>
     </Link>
     <PreLinkEvent>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

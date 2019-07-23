@@ -26,7 +26,7 @@
 
 // Enable function definitions in the GL headers below
 //#define GL_GLEXT_PROTOTYPES
-#define EGL_EGL_PROTOTYPES
+#define GL_GLES_PROTOTYPES
 
 // OpenGL ES includes
 #include <GLES2/gl2.h>
