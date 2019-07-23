@@ -25,8 +25,9 @@
 #include <ppltasks.h>
 
 // Enable function definitions in the GL headers below
-//#define GL_GLEXT_PROTOTYPES
-#define GL_GLES_PROTOTYPES
+#ifndef EGL_EGL_PROTOTYPES
+#define EGL_EGL_PROTOTYPES 1
+#endif
 
 // OpenGL ES includes
 #include <GLES2/gl2.h>

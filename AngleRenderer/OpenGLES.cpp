@@ -166,6 +166,11 @@ void OpenGLES::Reset()
 
 EGLSurface OpenGLES::CreateSurface(winrt::Windows::UI::Composition::ISpriteVisual & visual)
 {
+    auto displayExtensions = eglQueryString(mEglDisplay, EGL_EXTENSIONS);
+
+    // Check that the EGL_ANGLE_windows_ui_composition display extension is available
+    WINRT_ASSERT(strstr(displayExtensions, "EGL_ANGLE_windows_ui_composition") != nullptr);
+
 	if (!visual)
 	{
 		throw winrt::hresult_error(E_INVALIDARG, L"SwapChainPanel parameter is invalid");
@@ -183,7 +188,7 @@ EGLSurface OpenGLES::CreateSurface(winrt::Windows::UI::Composition::ISpriteVisua
 	};
 
 
-	surface = eglCreateWindowSurface(mEglDisplay, mEglConfig, static_cast<EGLNativeWindowType>(winrt::get_abi(visual)), surfaceAttributes);
+	surface = eglCreateWindowSurface(mEglDisplay, mEglConfig, static_cast<EGLNativeWindowType>(winrt::get_abi(visual)), nullptr);
 	if (surface == EGL_NO_SURFACE)
 	{
 		throw winrt::hresult_error(E_FAIL, L"Failed to create EGL surface");
