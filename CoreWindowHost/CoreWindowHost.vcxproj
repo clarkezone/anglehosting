@@ -65,8 +65,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)dependencies\Angle\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <LibraryPath>$(SolutionDir)x$(PlatformArchitecture)\$(Configuration)\;$(SolutionDir)Dependencies\Angle;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\src\github.com\clarkezone\anglehosting\Dependencies\Angle\Include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)x$(PlatformArchitecture)\$(Configuration)\;C:\src\github.com\clarkezone\anglehosting\Dependencies\Angle\UWPLib;$(LibraryPath)</LibraryPath>
+    <CustomBuildAfterTargets>CopyFilesToOutputDirectory</CustomBuildAfterTargets>
+    <CustomBuildBeforeTargets>SatelliteDllsProjectOutputGroup</CustomBuildBeforeTargets>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
@@ -84,6 +86,27 @@
       <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(AngleBinPath)lib\libGLESv2.lib;$(AngleBinPath)lib\libEGL.lib;$(OutDir)..\AngleRenderer.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">WindowsApp.lib;onecore.lib;%(AdditionalDependencies);libegl.dll.lib;AngleRenderer.lib;libglesv2.dll.lib;</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Message>
+    </PostBuildEvent>
+    <CustomBuildStep>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">copy $(SolutionDir)Dependencies\angle\uwpbin\*.* $(TargetDir).
+IF not EXIST Appx (mkdir Appx )
+copy $(SolutionDir)Dependencies\angle\uwpbin\*.* $(TargetDir)appx\.</Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Copy angle binaries for UWP</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">dummyrunalways</Outputs>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
