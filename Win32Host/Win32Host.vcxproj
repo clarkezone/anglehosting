@@ -56,7 +56,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(SolutionDir)Dependencies\angle\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64;$(SolutionDir)Dependencies\Angle;$(SolutionDir)x$(PlatformArchitecture)\$(Configuration)\</LibraryPath>
+    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64;$(SolutionDir)Dependencies\Angle\Win32lib;$(SolutionDir)x$(PlatformArchitecture)\$(Configuration)\</LibraryPath>
     <PreLinkEventUseInBuild>false</PreLinkEventUseInBuild>
   </PropertyGroup>
   <!--<PropertyGroup Label="ANGLE">
@@ -96,6 +96,13 @@
     <Manifest>
       <AdditionalManifestFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"> %(AdditionalManifestFiles)</AdditionalManifestFiles>
     </Manifest>
+    <CustomBuildStep>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">copy $(SolutionDir)Dependencies\angle\win32bin\*.* $(TargetDir).
+</Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">DummyRunAlways</Outputs>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Platform)'=='Win32'">
     <ClCompile>
