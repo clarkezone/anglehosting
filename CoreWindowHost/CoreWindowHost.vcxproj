@@ -67,8 +67,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>C:\src\github.com\clarkezone\anglehosting\Dependencies\Angle\Include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)x$(PlatformArchitecture)\$(Configuration)\;C:\src\github.com\clarkezone\anglehosting\Dependencies\Angle\UWPLib;$(LibraryPath)</LibraryPath>
-    <CustomBuildAfterTargets>CopyFilesToOutputDirectory</CustomBuildAfterTargets>
-    <CustomBuildBeforeTargets>SatelliteDllsProjectOutputGroup</CustomBuildBeforeTargets>
+    <CustomBuildAfterTargets>Link</CustomBuildAfterTargets>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
