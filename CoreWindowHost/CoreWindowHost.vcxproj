@@ -100,7 +100,7 @@
     </PostBuildEvent>
     <CustomBuildStep>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">copy $(SolutionDir)Dependencies\angle\uwpbin\*.* $(TargetDir).
-IF not EXIST Appx (mkdir Appx )
+IF not EXIST $(TargetDir)appx (mkdir $(TargetDir)appx)
 copy $(SolutionDir)Dependencies\angle\uwpbin\*.* $(TargetDir)appx\.</Command>
     </CustomBuildStep>
     <CustomBuildStep>
