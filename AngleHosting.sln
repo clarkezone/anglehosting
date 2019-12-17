@@ -1,13 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2035
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AngleRenderer", "AngleRenderer\AngleRenderer.vcxproj", "{93B61D4E-DA94-44AC-9807-9D51C2EC9520}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Win32Host", "Win32Host\Win32Host.vcxproj", "{31F030FB-268D-4A38-BB5B-18B48825F496}"
+	ProjectSection(ProjectDependencies) = postProject
+		{93B61D4E-DA94-44AC-9807-9D51C2EC9520} = {93B61D4E-DA94-44AC-9807-9D51C2EC9520}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CoreWindowHost", "CoreWindowHost\CoreWindowHost.vcxproj", "{5B8FEAB1-1415-446E-AFB0-95E42281D081}"
+	ProjectSection(ProjectDependencies) = postProject
+		{93B61D4E-DA94-44AC-9807-9D51C2EC9520} = {93B61D4E-DA94-44AC-9807-9D51C2EC9520}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
