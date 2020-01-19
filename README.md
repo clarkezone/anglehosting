@@ -14,9 +14,8 @@ TODO
 * the Windows 10 Standalone SDK version 10.0.17134
 2) Follow the instructions [here](https://commondatastorage.googleapis.com/chrome-infra-docs/flat/depot_tools/docs/html/depot_tools_tutorial.html#_setting_up) to install Depot Tools
 3) Assuming you have cloned this repo, start a command prompt in the root
-4) Run ```scripts\getanglefork.bat```
-5) Run ```scripts\createangletargets.bat```
-6) Run ```scripts\buildangletargets.bat```
+4) Switch to scripts dir ```cd scripts```
+5) Run the uber-script to fetch and build Angle ```getandbuild.bat```
 
 If you get this 
 ```

@@ -2,4 +2,4 @@
 call getanglefork.bat
 call createangletargets.bat
 call buildangletargets.bat
-call copylocal.ps1
+call Powershell.exe -executionpolicy remotesigned -File copylocal.ps1
