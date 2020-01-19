@@ -83,7 +83,7 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)dependencies\Angle\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\dependencies\Angle;$(LibraryPath)</LibraryPath>
-    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
+    <PreBuildEventUseInBuild>true</PreBuildEventUseInBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -138,8 +138,11 @@
       </AdditionalDependencies>
     </Lib>
     <PreBuildEvent>
-      <Command>$(SolutionDir)scripts\getangle.bat $(SolutionDir) $(PlatformArchitecture)</Command>
-      <Message>Getting Angle dependencies from GitHub</Message>
+      <Command>if not exist $(SolutionDir)Dependencies (
+ echo Dependencies missing please read readme.md
+ exit /b 1
+)</Command>
+      <Message>Check dependencies exist</Message>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

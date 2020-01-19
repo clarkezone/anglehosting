@@ -103,6 +103,12 @@
     <CustomBuildStep>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">DummyRunAlways</Outputs>
     </CustomBuildStep>
+    <PreBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">if not exist $(SolutionDir)Dependencies (
+ echo Dependencies missing please read readme.md
+ exit /b 1
+)</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Platform)'=='Win32'">
     <ClCompile>

@@ -88,8 +88,10 @@
       <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">WindowsApp.lib;onecore.lib;%(AdditionalDependencies);libegl.dll.lib;AngleRenderer.lib;libglesv2.dll.lib;</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">if not exist $(SolutionDir)Dependencies (
+ echo Dependencies missing please read readme.md
+ exit /b 1
+)</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -100,7 +102,8 @@
       </Message>
     </PostBuildEvent>
     <CustomBuildStep>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">copy $(SolutionDir)Dependencies\angle\uwpbin\*.* $(TargetDir).
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+copy $(SolutionDir)Dependencies\angle\uwpbin\*.* $(TargetDir).
 IF not EXIST $(TargetDir)appx (mkdir $(TargetDir)appx)
 copy $(SolutionDir)Dependencies\angle\uwpbin\*.* $(TargetDir)appx\.</Command>
     </CustomBuildStep>
