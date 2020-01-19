@@ -65,8 +65,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\src\github.com\clarkezone\anglehosting\Dependencies\Angle\Include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)x$(PlatformArchitecture)\$(Configuration)\;C:\src\github.com\clarkezone\anglehosting\Dependencies\Angle\UWPLib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Dependencies\angle\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)x$(PlatformArchitecture)\$(Configuration)\;$(SolutionDir)Dependencies\angle\UWPLib;$(LibraryPath)</LibraryPath>
     <CustomBuildAfterTargets>Link</CustomBuildAfterTargets>
     <CustomBuildBeforeTargets>
     </CustomBuildBeforeTargets>
