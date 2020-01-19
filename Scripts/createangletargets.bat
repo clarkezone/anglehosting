@@ -1,3 +1,4 @@
+@echo off
 setlocal EnableDelayedExpansion
 
 pushd C:\src\github.com\clarkezone\angle
