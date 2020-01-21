@@ -197,6 +197,25 @@ EGLSurface OpenGLES::CreateSurface(winrt::Windows::UI::Composition::ISpriteVisua
 	return surface;
 }
 
+EGLSurface OpenGLES::CreateSurface(const winrt::Windows::UI::Xaml::Controls::SwapChainPanel& panel) 
+{
+	EGLSurface surface = EGL_NO_SURFACE;
+
+	const EGLint surfaceAttributes[] = {
+		// EGL_ANGLE_SURFACE_RENDER_TO_BACK_BUFFER is part of the same optimization as EGL_ANGLE_DISPLAY_ALLOW_RENDER_TO_BACK_BUFFER (see above).
+		// If you have compilation issues with it then please update your Visual Studio templates.
+		// EGL_RENDER_BUFFER, EGL_BACK_BUFFER,
+		EGL_NONE
+	};
+
+	surface = eglCreateWindowSurface(mEglDisplay, mEglConfig, static_cast<EGLNativeWindowType>(winrt::get_abi(panel)), nullptr);
+	if (surface == EGL_NO_SURFACE) {
+		throw hresult_error(E_FAIL, L"Failed to create EGL surface");
+	}
+
+	return surface;
+}
+
 void OpenGLES::GetSurfaceDimensions(const EGLSurface surface, EGLint* width, EGLint* height)
 {
 	eglQuerySurface(mEglDisplay, surface, EGL_WIDTH, width);

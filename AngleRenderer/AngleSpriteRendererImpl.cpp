@@ -16,8 +16,15 @@ AngleSpriteRendererPrivate::~AngleSpriteRendererPrivate()
 	delete mOpenGLES;
 }
 
-void AngleSpriteRendererPrivate::Start(const SpriteVisual & withVisual) {
+void AngleSpriteRendererPrivate::SetVisual(const SpriteVisual& withVisual) {
 	mHostVisual = withVisual;
+}
+
+void AngleSpriteRendererPrivate::SetSwapChainPanel(const SwapChainPanel& panel) {
+	mSwapChainPanel = panel;
+}
+
+void AngleSpriteRendererPrivate::Start() {
 	CreateRenderSurface();
 	StartRenderLoop();
 }
@@ -26,7 +33,12 @@ void AngleSpriteRendererPrivate::CreateRenderSurface()
 {
 	if (mOpenGLES && mRenderSurface == EGL_NO_SURFACE)
 	{
-		mRenderSurface = mOpenGLES->CreateSurface(mHostVisual);
+		if (mHostVisual != nullptr) {
+			mRenderSurface = mOpenGLES->CreateSurface(mHostVisual);
+		}
+		else {
+			mRenderSurface = mOpenGLES->CreateSurface(mSwapChainPanel);
+		}
 	}
 }
 

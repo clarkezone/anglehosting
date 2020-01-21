@@ -5,13 +5,16 @@ using namespace winrt;
 using namespace Concurrency;
 using namespace Windows::Foundation;
 using namespace Windows::UI::Composition;
+using namespace Windows::UI::Xaml::Controls;
 
 class AngleSpriteRendererPrivate
 {
 public:
 	AngleSpriteRendererPrivate();
 	~AngleSpriteRendererPrivate();
-	void Start(const SpriteVisual & withVisual);
+	void Start();
+	void SetVisual(const SpriteVisual & withVisual);
+	void SetSwapChainPanel(const SwapChainPanel& panel);
 private:
 	void CreateRenderSurface();
 	void DestroyRenderSurface();
@@ -25,5 +28,6 @@ private:
 	Concurrency::critical_section mRenderSurfaceCriticalSection;
 	IAsyncAction mRenderLoopWorker;
 	SpriteVisual mHostVisual{nullptr};
+	SwapChainPanel mSwapChainPanel{nullptr};
 };
 
