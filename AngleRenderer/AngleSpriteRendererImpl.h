@@ -12,9 +12,8 @@ class AngleSpriteRendererPrivate
 public:
 	AngleSpriteRendererPrivate();
 	~AngleSpriteRendererPrivate();
-	void Start();
-	void SetVisual(const SpriteVisual & withVisual);
-	void SetSwapChainPanel(const SwapChainPanel& panel);
+	void Start(const SpriteVisual & withVisual);
+	void Start(const SwapChainPanel& panel);
 private:
 	void CreateRenderSurface();
 	void DestroyRenderSurface();

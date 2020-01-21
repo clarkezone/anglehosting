@@ -144,8 +144,7 @@ struct Window : DesktopWindow<Window>
 		//visual.Brush(compositor.CreateColorBrush(Windows::UI::Colors::Red()));
 
 		m_visuals.InsertAtTop(visual);
-		m_render.SetVisual(visual);
-        m_render.Start();
+		m_render.Start(visual);        
     }
 
 private:

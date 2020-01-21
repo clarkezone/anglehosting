@@ -14,14 +14,10 @@ AngleSpriteRenderer::~AngleSpriteRenderer() {
 	delete mRender;
 }
 
-void AngleSpriteRenderer::Start() {
-	mRender->Start();
+void AngleSpriteRenderer::Start(const winrt::Windows::UI::Composition::SpriteVisual & withVisual) {
+	mRender->Start(withVisual);
 }
 
-void AngleSpriteRenderer::SetVisual(const winrt::Windows::UI::Composition::SpriteVisual & withVisual) {
-	mRender->SetVisual(withVisual);
-}
-
-void AngleSpriteRenderer::SetSwapChainPanel(const winrt::Windows::UI::Xaml::Controls::SwapChainPanel& panel) {
-	mRender->SetSwapChainPanel(panel);
+void AngleSpriteRenderer::Start(const winrt::Windows::UI::Xaml::Controls::SwapChainPanel& panel) {
+	mRender->Start(panel);
 }

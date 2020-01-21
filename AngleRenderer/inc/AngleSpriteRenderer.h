@@ -10,9 +10,8 @@ public:
 
 	~AngleSpriteRenderer();
 
-	void Start();
-	void SetVisual(const winrt::Windows::UI::Composition::SpriteVisual& withVisual);
-	void SetSwapChainPanel(const winrt::Windows::UI::Xaml::Controls::SwapChainPanel& panel);
+	void Start(const winrt::Windows::UI::Composition::SpriteVisual& withVisual);
+	void Start(const winrt::Windows::UI::Xaml::Controls::SwapChainPanel& panel);
 private:
 	AngleSpriteRendererPrivate * mRender{ nullptr };
 };

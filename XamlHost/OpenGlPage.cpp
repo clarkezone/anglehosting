@@ -17,31 +17,13 @@ namespace winrt::XamlHost::implementation
     OpenGlPage::OpenGlPage()
     {
         InitializeComponent();
-        //Compositor compositor;
-        //ContainerVisual root = compositor.CreateContainerVisual();
-        //m_target = compositor.CreateTargetForCurrentView();
-        //m_target.Root(root);
-        //m_visuals = root.Children();
-
-        AddVisual({ 10.0f, 10.0f });
+        AddVisual();
     }
 
-    void OpenGlPage::AddVisual(float2 const point)
+    void OpenGlPage::AddVisual()
     {
-        //Compositor compositor = m_visuals.Compositor();
-        //SpriteVisual visual = compositor.CreateSpriteVisual();
-        //visual.Size(
-        //    {
-        //        600.0f,
-        //        600.0f
-        //    });
-
-        ////visual.Brush(compositor.CreateColorBrush(Windows::UI::Colors::Red()));
-
-        //m_visuals.InsertAtTop(visual);
         SwapChainPanel panel;
         Content(panel);
-        m_render.SetSwapChainPanel(panel);
-        m_render.Start();
+        m_render.Start(panel);
     }
 }

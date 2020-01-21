@@ -84,8 +84,7 @@ struct App : implements<App, IFrameworkViewSource, IFrameworkView>
 
         m_visuals.InsertAtTop(visual);
 		
-		m_render.SetVisual(visual);
-        m_render.Start();
+		m_render.Start(visual);
     }
 };
 

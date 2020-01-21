@@ -9,7 +9,7 @@ namespace winrt::XamlHost::implementation
         OpenGlPage();
 
     private:
-        void AddVisual(winrt::Windows::Foundation::Numerics::float2 const point);
+        void AddVisual();
 
         winrt::Windows::UI::Composition::CompositionTarget m_target{ nullptr };
         winrt::Windows::UI::Composition::VisualCollection m_visuals{ nullptr };

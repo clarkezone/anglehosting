@@ -16,15 +16,14 @@ AngleSpriteRendererPrivate::~AngleSpriteRendererPrivate()
 	delete mOpenGLES;
 }
 
-void AngleSpriteRendererPrivate::SetVisual(const SpriteVisual& withVisual) {
+void AngleSpriteRendererPrivate::Start(const SpriteVisual& withVisual) {
 	mHostVisual = withVisual;
+	CreateRenderSurface();
+	StartRenderLoop();
 }
 
-void AngleSpriteRendererPrivate::SetSwapChainPanel(const SwapChainPanel& panel) {
+void AngleSpriteRendererPrivate::Start(const SwapChainPanel& panel) {
 	mSwapChainPanel = panel;
-}
-
-void AngleSpriteRendererPrivate::Start() {
 	CreateRenderSurface();
 	StartRenderLoop();
 }
