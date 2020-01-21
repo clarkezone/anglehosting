@@ -16,7 +16,7 @@ AngleSpriteRendererPrivate::~AngleSpriteRendererPrivate()
 	delete mOpenGLES;
 }
 
-void AngleSpriteRendererPrivate::Start(const SpriteVisual& withVisual) {
+void AngleSpriteRendererPrivate::Start(const SpriteVisual & withVisual) {
 	mHostVisual = withVisual;
 	CreateRenderSurface();
 	StartRenderLoop();

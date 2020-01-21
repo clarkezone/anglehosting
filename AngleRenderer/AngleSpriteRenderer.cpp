@@ -18,6 +18,6 @@ void AngleSpriteRenderer::Start(const winrt::Windows::UI::Composition::SpriteVis
 	mRender->Start(withVisual);
 }
 
-void AngleSpriteRenderer::Start(const winrt::Windows::UI::Xaml::Controls::SwapChainPanel& panel) {
+void AngleSpriteRenderer::Start(const winrt::Windows::UI::Xaml::Controls::SwapChainPanel & panel) {
 	mRender->Start(panel);
 }
