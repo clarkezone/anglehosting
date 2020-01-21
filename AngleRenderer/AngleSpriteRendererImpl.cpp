@@ -22,11 +22,22 @@ void AngleSpriteRendererPrivate::Start(const SpriteVisual & withVisual) {
 	StartRenderLoop();
 }
 
+void AngleSpriteRendererPrivate::Start(const SwapChainPanel& panel) {
+	mSwapChainPanel = panel;
+	CreateRenderSurface();
+	StartRenderLoop();
+}
+
 void AngleSpriteRendererPrivate::CreateRenderSurface()
 {
 	if (mOpenGLES && mRenderSurface == EGL_NO_SURFACE)
 	{
-		mRenderSurface = mOpenGLES->CreateSurface(mHostVisual);
+		if (mHostVisual != nullptr) {
+			mRenderSurface = mOpenGLES->CreateSurface(mHostVisual);
+		}
+		else {
+			mRenderSurface = mOpenGLES->CreateSurface(mSwapChainPanel);
+		}
 	}
 }
 

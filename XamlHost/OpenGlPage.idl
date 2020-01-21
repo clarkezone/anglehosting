@@ -1,0 +1,8 @@
+namespace XamlHost
+{
+    [default_interface]
+    runtimeclass OpenGlPage : Windows.UI.Xaml.Controls.Page
+    {
+        OpenGlPage();
+    }
+}
