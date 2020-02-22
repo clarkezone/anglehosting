@@ -107,6 +107,23 @@ struct Window : DesktopWindow<Window>
 		m_rootGrid.Children().Append(content);
 	}
 
+	void AddVisualForContent(Windows::UI::Xaml::UIElement const content)
+	{
+		auto host = Windows::UI::Xaml::Hosting::ElementCompositionPreview::GetElementVisual(content);
+
+		SpriteVisual visual = host.Compositor().CreateSpriteVisual();
+
+		visual.Size(
+			{
+				600.0f,
+				600.0f
+			});
+
+		Windows::UI::Xaml::Hosting::ElementCompositionPreview::SetElementChildVisual(content, visual);
+
+		m_render.Start(visual);
+	}
+
 private:
 	UINT m_currentWidthPhysical = 600;
 	UINT m_currentHeightPhysical = 600;
@@ -114,6 +131,7 @@ private:
 	Windows::UI::Xaml::Controls::Grid m_rootGrid{ nullptr };
 	DesktopWindowXamlSource m_xamlSource{ nullptr };
 	Windows::UI::Xaml::Hosting::WindowsXamlManager m_manager{ nullptr };
+	AngleSpriteRenderer m_render;
 };
 
 Windows::UI::Xaml::UIElement CreateDefaultContent() {
@@ -165,7 +183,10 @@ int __stdcall wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int)
 	Window window;
 
 	auto defaultContent = CreateDefaultContent();
+
 	window.SetRootContent(defaultContent);
+
+	window.AddVisualForContent(defaultContent);
 
 	MSG message;
 
