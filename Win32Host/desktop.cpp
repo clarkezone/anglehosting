@@ -123,11 +123,6 @@ struct Window : DesktopWindow<Window>
 		m_visuals = root.Children();
 
         AddVisual(m_visuals, 100.0f, 100.0f);
-        /*AddVisual(visuals, 220.0f, 100.0f);
-        AddVisual(visuals, 100.0f, 220.0f);
-        AddVisual(visuals, 220.0f, 220.0f);*/
-		
-		
     }
 
     void AddVisual(VisualCollection const& visuals, float x, float y)
@@ -140,8 +135,6 @@ struct Window : DesktopWindow<Window>
 				600.0f,
 				600.0f
 			});
-
-		//visual.Brush(compositor.CreateColorBrush(Windows::UI::Colors::Red()));
 
 		m_visuals.InsertAtTop(visual);
 		m_render.Start(visual);
