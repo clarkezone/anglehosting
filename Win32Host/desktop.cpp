@@ -117,15 +117,16 @@ struct Window : DesktopWindow<Window>
         Compositor compositor;
         m_target = CreateDesktopWindowTarget(compositor, m_window);
         auto root = compositor.CreateSpriteVisual();
+
         root.RelativeSizeAdjustment({ 1.0f, 1.0f });
         root.Brush(compositor.CreateColorBrush({ 0xFF, 0xEF, 0xE4 , 0xB0 }));
         m_target.Root(root);
 		m_visuals = root.Children();
 
-        AddVisual(m_visuals, 100.0f, 100.0f);
+        AddAngleRenderer(m_visuals, 100.0f, 100.0f);
     }
 
-    void AddVisual(VisualCollection const& visuals, float x, float y)
+    void AddAngleRenderer(VisualCollection const& visuals, float x, float y)
     {
 		Compositor compositor = m_visuals.Compositor();
 		SpriteVisual visual = compositor.CreateSpriteVisual();

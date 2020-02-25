@@ -46,15 +46,16 @@ struct App : implements<App, IFrameworkViewSource, IFrameworkView>
     void SetWindow(CoreWindow const & window)
     {
         Compositor compositor;
-        ContainerVisual root = compositor.CreateContainerVisual();
         m_target = compositor.CreateTargetForCurrentView();
+        ContainerVisual root = compositor.CreateContainerVisual();
+
         m_target.Root(root);
         m_visuals = root.Children();
 
-		AddVisual({ 10.0f, 10.0f });
+		AddAngleRenderer({ 10.0f, 10.0f });
     }
 
-    void AddVisual(float2 const point)
+    void AddAngleRenderer(float2 const point)
     {
         Compositor compositor = m_visuals.Compositor();
         SpriteVisual visual = compositor.CreateSpriteVisual();
